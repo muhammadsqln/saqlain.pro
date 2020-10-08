@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/saqlain.pro/static/css/main.83d34a46.chunk.css",
+    "main.js": "/saqlain.pro/static/js/main.2135ee93.chunk.js",
+    "main.js.map": "/saqlain.pro/static/js/main.2135ee93.chunk.js.map",
+    "runtime-main.js": "/saqlain.pro/static/js/runtime-main.b6f48601.js",
+    "runtime-main.js.map": "/saqlain.pro/static/js/runtime-main.b6f48601.js.map",
+    "static/js/2.2ac3ba1b.chunk.js": "/saqlain.pro/static/js/2.2ac3ba1b.chunk.js",
+    "static/js/2.2ac3ba1b.chunk.js.map": "/saqlain.pro/static/js/2.2ac3ba1b.chunk.js.map",
+    "index.html": "/saqlain.pro/index.html",
+    "precache-manifest.d1a1c0e56a1a2660b077ac4fdeba54ce.js": "/saqlain.pro/precache-manifest.d1a1c0e56a1a2660b077ac4fdeba54ce.js",
+    "service-worker.js": "/saqlain.pro/service-worker.js",
+    "static/css/main.83d34a46.chunk.css.map": "/saqlain.pro/static/css/main.83d34a46.chunk.css.map",
+    "static/js/2.2ac3ba1b.chunk.js.LICENSE.txt": "/saqlain.pro/static/js/2.2ac3ba1b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b6f48601.js",
+    "static/js/2.2ac3ba1b.chunk.js",
+    "static/css/main.83d34a46.chunk.css",
+    "static/js/main.2135ee93.chunk.js"
+  ]
+}
