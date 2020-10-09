@@ -22,6 +22,7 @@ function CoverIndex(props) {
   const switchPage = (id) => {
     const idInt = parseInt(id);
     props.setCurPage(idInt);
+    // can trigger the animation?
   }
 
   return (
@@ -30,7 +31,6 @@ function CoverIndex(props) {
         <h1>Muhammad Saqlain</h1>
         <h2>Toronto, Canada</h2>
         <h2>(647) 786-6803</h2>
-        <p>Size of index: {navIndex.length}</p>
       </div>
       <div className = 'navArea'>
         {navIndex.map(eachIndex => (

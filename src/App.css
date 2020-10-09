@@ -106,4 +106,16 @@
 .detailPane {
   width: 100%;
   height: calc(100vh - 40px);
+  overflow-y: auto;
+  scrollbar-width: 1px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.detailPane::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.page {
+  height: calc(100vh - 40px);
 }
