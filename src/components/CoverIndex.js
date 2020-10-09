@@ -11,8 +11,9 @@ function CoverIndex(props) {
   ]
 
   const switchPage = (id) => {
-    props.setCurPage(id);
-    console.log('pressed button: ' + id);
+    const i = parseInt(id);
+    props.setCurPage(i);
+    console.log('pressed button: ' + i);
   }
 
   useLayoutEffect(() => {
