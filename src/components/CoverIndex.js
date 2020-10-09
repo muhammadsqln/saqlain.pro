@@ -5,10 +5,15 @@ function CoverIndex(props) {
 
   let navIndex = [];
   let navIndex2 = [
-    <button></button>,
-    <button className = 'current'></button>,
-    <button></button>
+    <button id='0' onClick={(e) => switchPage(e.target.id)}></button>,
+    <button id='1' onClick={(e) => switchPage(e.target.id)} className = 'current'></button>,
+    <button id='2' onClick={(e) => switchPage(e.target.id)}></button>
   ]
+
+  const switchPage = (id) => {
+    props.setCurPage(id);
+    console.log('pressed button: ' + id);
+  }
 
   useLayoutEffect(() => {
     for (let i=0; i<props.numPages; i++) {

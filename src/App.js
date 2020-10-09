@@ -2,24 +2,21 @@ import React, { useState } from 'react';
 import './App.css';
 import CoverIndex from './components/CoverIndex.js';
 import DetailPane from './components/DetailPane.js';
+import PageTitleBar from './components/PageTitleBar.js';
 
 function App() {
 
   const [numPages, setNumPages] = useState(5);
-  const [curPage, setCurPage] = useState(1);
-
-  const changeNumPages = (pageNum) => {
-    setNumPages(pageNum);
-  }
-
-  const changeCurPage = (currentPage) => {
-    setCurPage(currentPage);
-  }
+  const [curPage, setCurPage] = useState(0);
 
   return (
     <div className="App">
-      <CoverIndex numPages={numPages} curPage={curPage} />
-      <DetailPane changeNumPage={changeNumPages} changeCurPage={changeCurPage} curPage={curPage}/>
+      <CoverIndex numPages={numPages} curPage={curPage} setCurPage={setCurPage}/>
+      <div className='appPage'>
+        <PageTitleBar curPage={curPage} />
+        <DetailPane setNumPages={setNumPages} setCurPage={setCurPage} curPage={curPage}/>
+      </div>
+      
     </div>
   )
 }
