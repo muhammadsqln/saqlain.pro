@@ -50,18 +50,30 @@
 
 #cover {
     background-color: #002B81;
-    width: 40%;
+    width: 35%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    color: white;
     height: 100%;
+
+
 } 
+
+.cover-text{
+    margin: 2px 0px;
+    text-align: center;
+    color: white;
+    
+    
+
+  
+}
+
 
 #navigator{
     background-color: #002B81;
-    width: 5%;
+    width: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -84,23 +96,76 @@ background-color: #3F9535;
 #detail-pane{
 
 
-    width: 55%;
+    width: 65%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: scroll;
+
 }
 
 #detail-title{
     background-color: #3C68BF;
     color: white;
     display: inline-block;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
     margin: 20px;
 
 }
 
-#title-header{
 
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px white;
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #8FA7CC;
+    border-radius: 5px;
+  }
+
+  .listItem{
+
+margin-left: 30px;
+  }
+
+@media screen and (max-width:730px){
+
+#home{
+    flex-direction: column;
+}
+#cover {
+
+    width: initial;
+    height: initial;
+    align-items: flex-end;
+    padding: 20px;
+
+} 
+
+#detail-pane{
     width: 100%;
 
-    text-align: center;
+}
+
+h2.cover-text {
+
+    font-size: 14px;
+}
+
+h4.cover-text{
+    font-size: 12px;
+}
+
+
+
 }
