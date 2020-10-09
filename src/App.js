@@ -17,7 +17,7 @@ function App() {
   }
 
   return (
-    <div id="App">
+    <div className="App">
       <CoverIndex numPages={numPages} curPage={curPage} />
       <DetailPane changeNumPage={changeNumPages} changeCurPage={changeCurPage} curPage={curPage}/>
     </div>

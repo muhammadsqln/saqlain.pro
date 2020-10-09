@@ -5,7 +5,6 @@
 .App {
   display: flex;
   flex-direction: row;
-  overflow: hidden;
 }
 
 .cover {
@@ -16,6 +15,7 @@
   align-items: center;
   color: white;
   height: 100vh;
+  position: fixed;
   transition: transform 0.2s ease-in;
 }
 
@@ -45,19 +45,34 @@
   background-color: #209125;
 }
 
-@media (max-width: 800px) {
+.navArea .current {
+  background-color: #209125;
+  cursor: default;
+}
+
+.navArea .current:hover {
+  cursor: default;
+}
+
+@media (max-width: 900px) {
   .cover {
     transform: translateX(-350px);
   }
   .cover:hover {
     transform: translateX(0);
-    transition: all 0.1s ease-in;
+    transition: transform 0.1s ease-in;
   }
 }
 
-@media (max-width: 500px) {
-  .cover:hover {
-    transform: translateX(-350px);
+.detailPane {
+  margin-left: clamp(400px, 35vw, 500px);
+  padding: 0 5px;
+  transition: margin 0.2s ease-in;
+}
+
+@media (max-width: 900px) {
+  .detailPane {
+    margin-left: 50px;
   }
 }
 

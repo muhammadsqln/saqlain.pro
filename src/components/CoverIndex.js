@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import '../App.css';
 
 function CoverIndex(props) {
@@ -6,16 +6,18 @@ function CoverIndex(props) {
   let navIndex = [];
   let navIndex2 = [
     <button></button>,
-    <button></button>,
+    <button className = 'current'></button>,
     <button></button>
   ]
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     for (let i=0; i<props.numPages; i++) {
       if (i === props.curPage) {
-        navIndex[i] = <button></button>
+        navIndex[i] = <button className='current' key={i}></button>;
       }
-      else navIndex[i] = <button></button>
+      else {
+        navIndex[i] = <button key={i}></button>;
+      }
     }
   },[navIndex, props])
 
@@ -28,10 +30,11 @@ function CoverIndex(props) {
         <p>Size of index: {navIndex.length}</p>
       </div>
       <div className = 'navArea'>
-        {navIndex2.map(eachNav => (
-          eachNav
+        {navIndex2.map(eachIndex => (
+          eachIndex
         ))}
       </div>
+      {console.log(navIndex)}
     </div>
   )
 }
