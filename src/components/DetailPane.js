@@ -22,7 +22,7 @@ function DetailPane(props) {
         props.curPage = props.setCurPage(props.curPage+1);
       }
       else setScrollDir('none');
-    }, 500)
+    }, 200)
   }
 
   return (
