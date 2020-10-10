@@ -20,7 +20,7 @@ function DetailPane(props) {
 
   useEffect(() => {
     //change curPage when scrolling happens
-    let currentPage = parseInt((currentY/maxY)*numOfPages-0.01, 10);
+    let currentPage = parseInt((currentY/maxY)*numOfPages, 10);
     console.log('switching to currentPage: ' + currentPage);
     props.setCurPage(currentPage);
     // eslint-disable-next-line
@@ -32,8 +32,7 @@ function DetailPane(props) {
 
   const scrollHandler = (e) => {
     setCurrentY(pageRef.current.scrollTop);
-    setMaxY(pageRef.current.scrollTopMax);
-    console.log(pageRef.current);
+    setMaxY(pageRef.current.scrollTopMax + pageRef.current.offsetHeight/2);
   }
 
   return (
