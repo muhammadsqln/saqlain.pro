@@ -121,5 +121,5 @@
 .page {
   height: calc(100vh - 40px);
   scroll-snap-align: start;
-  scroll-snap-stop: always;
+  scroll-snap-stop: normal;
 }

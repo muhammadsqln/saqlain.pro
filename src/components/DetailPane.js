@@ -1,37 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect , useRef} from 'react';
 import '../App.css';
 
 function DetailPane(props) {
 
   const [scrollDir, setScrollDir] = useState('none');
+  const pageRef = useRef();
+
+  useEffect(() => {
+    props.setNumPages(5);
+    // eslint-disable-next-line
+  }, [])
+
+  useEffect(() => {
+    //scroll page when curPage changes
+    document.getElementsByClassName('detailPane').scrollTop = 0;
+  }, [props.curPage])
 
   const scrollHandler = (e) => {
 
     setScrollDir(e.deltaY);
-    console.log('Y: ' + e.deltaY);
+    const timeoutFunc = (e) => setTimeout(changeCurrentPage(e), 200)
+    timeoutFunc(e);
+    
+  }
 
-    setTimeout(() => {
-      if (e.deltaY < 0) {
-        //scroll up
-        console.log('scroll up');
-        props.curPage = props.setCurPage(props.curPage-1);
-      }
-      else if (e.deltaY > 0) {
-        //scroll down
-        console.log('scroll down');
-        props.curPage = props.setCurPage(props.curPage+1);
-      }
-      else setScrollDir('none');
-    }, 200)
+  const changeCurrentPage = (e) => {
+    if (e.deltaY < 0 && props.curPage > 0) {
+      //scroll up
+      console.log('scroll up');
+      props.setCurPage(props.curPage-1);
+    }
+    else if (e.deltaY > 0 && props.curPage < 4) {
+      //scroll down
+      console.log('scroll down');
+      props.setCurPage(props.curPage+1);
+    }
+    else setScrollDir('none');
   }
 
   return (
-    <div className = 'detailPane' onWheel={(e) => scrollHandler(e)}>
+    <div className = 'detailPane' onWheel={(e) => scrollHandler(e)} ref={pageRef} id='root'>
       <div className = 'page' style={{backgroundColor:'#dddddd'}}>
-        <div>
         Page: 1
         <p>Scroll direction: {scrollDir}</p>
-        </div>
       </div>
       <div className = 'page' style={{backgroundColor:'#cccccc'}}>
         Page: 2

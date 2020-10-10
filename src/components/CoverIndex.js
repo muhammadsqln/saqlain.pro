@@ -37,7 +37,6 @@ function CoverIndex(props) {
           eachIndex
         ))}
       </div>
-      {console.log(navIndex)}
     </div>
   )
 }
