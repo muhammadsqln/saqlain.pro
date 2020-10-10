@@ -6,7 +6,7 @@ import PageTitleBar from './components/PageTitleBar.js';
 
 function App() {
 
-  const [numPages, setNumPages] = useState(5);
+  const [numPages, setNumPages] = useState(1);
   const [curPage, setCurPage] = useState(0);
 
   return (

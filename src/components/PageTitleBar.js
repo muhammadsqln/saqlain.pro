@@ -10,7 +10,6 @@ function PageTitleBar(props) {
     else if (props.curPage === 1) setPageTitle('Title 2');
     else if (props.curPage === 2) setPageTitle('Title 3');
     else if (props.curPage === 3) setPageTitle('Title 4');
-    else if (props.curPage === 4) setPageTitle('Title 5');
     else setPageTitle('Error');
   },[props.curPage])
 

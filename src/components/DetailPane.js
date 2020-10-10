@@ -1,65 +1,47 @@
-import React, { useState, useEffect , useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../App.css';
+import Page1 from './pages/Page1.js';
+import Page2 from './pages/Page2.js';
+import Page3 from './pages/Page3.js';
+import Page4 from './pages/Page4.js';
+const numOfPages = 4;
 
 function DetailPane(props) {
 
-  const [scrollDir, setScrollDir] = useState('none');
   const pageRef = useRef();
+  const [currentY, setCurrentY] = useState(0);
+  const [maxY, setMaxY] = useState(1);
 
   useEffect(() => {
-    props.setNumPages(5);
+    //set number of pages
+    props.setNumPages(numOfPages);
     // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
-    //scroll page when curPage changes
-    document.getElementsByClassName('detailPane').scrollTop = 0;
+    //change curPage when scrolling happens
+    let currentPage = parseInt((currentY/maxY)*numOfPages-0.01, 10);
+    console.log('switching to currentPage: ' + currentPage);
+    props.setCurPage(currentPage);
+    // eslint-disable-next-line
+  }, [currentY])
+
+  useEffect(() => {
+    //scroll when curPage changes
   }, [props.curPage])
 
   const scrollHandler = (e) => {
-
-    setScrollDir(e.deltaY);
-    const timeoutFunc = (e) => setTimeout(changeCurrentPage(e), 200)
-    timeoutFunc(e);
-    
-  }
-
-  const changeCurrentPage = (e) => {
-    if (e.deltaY < 0 && props.curPage > 0) {
-      //scroll up
-      console.log('scroll up');
-      props.setCurPage(props.curPage-1);
-    }
-    else if (e.deltaY > 0 && props.curPage < 4) {
-      //scroll down
-      console.log('scroll down');
-      props.setCurPage(props.curPage+1);
-    }
-    else setScrollDir('none');
+    setCurrentY(pageRef.current.scrollTop);
+    setMaxY(pageRef.current.scrollTopMax);
+    console.log(pageRef.current);
   }
 
   return (
-    <div className = 'detailPane' onWheel={(e) => scrollHandler(e)} ref={pageRef} id='root'>
-      <div className = 'page' style={{backgroundColor:'#dddddd'}}>
-        Page: 1
-        <p>Scroll direction: {scrollDir}</p>
-      </div>
-      <div className = 'page' style={{backgroundColor:'#cccccc'}}>
-        Page: 2
-        <p>Scroll direction: {scrollDir}</p>
-      </div>
-      <div className = 'page' style={{backgroundColor:'#bbbbbb'}}>
-        Page: 3
-        <p>Scroll direction: {scrollDir}</p>
-      </div>
-      <div className = 'page' style={{backgroundColor:'#aaaaaa'}}>
-        Page: 4
-        <p>Scroll direction: {scrollDir}</p>
-      </div>
-      <div className = 'page' style={{backgroundColor:'#999999'}}>
-        Page: 5
-        <p>Scroll direction: {scrollDir}</p>
-      </div>
+    <div className = 'pageContainer' onScroll={scrollHandler} ref={pageRef} id='root'>
+      <Page1 currentY={currentY} maxY={maxY} />
+      <Page2 currentY={currentY} maxY={maxY} />
+      <Page3 currentY={currentY} maxY={maxY} />
+      <Page4 currentY={currentY} maxY={maxY} />
     </div>
   )
 }
