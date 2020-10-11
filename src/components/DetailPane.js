@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import '../App.css';
 import Page1 from './pages/Page1.js';
 import Page2 from './pages/Page2.js';
@@ -9,8 +9,6 @@ const numOfPages = 4;
 function DetailPane(props) {
 
   const pageRef = useRef();
-  const [currentY, setCurrentY] = useState(0);
-  const [maxY, setMaxY] = useState(1);
 
   useEffect(() => {
     //set number of pages
@@ -19,28 +17,26 @@ function DetailPane(props) {
   }, [])
 
   useEffect(() => {
-    //change curPage when scrolling happens
-    let currentPage = parseInt((currentY/maxY)*numOfPages, 10);
-    console.log('switching to currentPage: ' + currentPage);
-    props.setCurPage(currentPage);
-    // eslint-disable-next-line
-  }, [currentY])
-
-  useEffect(() => {
     //scroll when curPage changes
+    console.log(pageRef.current);
+    const targetY = pageRef.current.offsetHeight * props.curPage;
+    pageRef.current.scrollTo(0, targetY);
   }, [props.curPage])
 
-  const scrollHandler = (e) => {
-    setCurrentY(pageRef.current.scrollTop);
-    setMaxY(pageRef.current.scrollTopMax + pageRef.current.offsetHeight/2);
+  const scrollHandler = () => {
+    //change curPage when scrolling
+    const currentY = pageRef.current.scrollTop;
+    const maxY = pageRef.current.scrollTopMax + pageRef.current.offsetHeight;
+    const currentPage = parseInt((currentY/maxY)*numOfPages, 10);
+    props.setCurPage(currentPage);
   }
 
   return (
-    <div className = 'pageContainer' onScroll={scrollHandler} ref={pageRef} id='root'>
-      <Page1 currentY={currentY} maxY={maxY} />
-      <Page2 currentY={currentY} maxY={maxY} />
-      <Page3 currentY={currentY} maxY={maxY} />
-      <Page4 currentY={currentY} maxY={maxY} />
+    <div className = 'pageContainer' onScroll={scrollHandler} ref={pageRef} id='pageContainer'>
+      <Page1 />
+      <Page2 />
+      <Page3 />
+      <Page4 />
     </div>
   )
 }
