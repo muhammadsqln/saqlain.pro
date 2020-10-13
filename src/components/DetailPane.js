@@ -23,16 +23,25 @@ function DetailPane(props) {
     pageRef.current.scrollTo(0, targetY);
   }, [props.curPage])
 
-  const scrollHandler = () => {
+  const scrollHandler = (e) => {
     //change curPage when scrolling
-    const currentY = pageRef.current.scrollTop;
-    const maxY = pageRef.current.scrollTopMax + pageRef.current.offsetHeight;
-    const currentPage = parseInt((currentY/maxY)*numOfPages, 10);
+    // const currentY = pageRef.current.scrollTop;
+    // const maxY = pageRef.current.scrollTopMax + pageRef.current.offsetHeight;
+    // const currentPage = parseInt((currentY/maxY)*numOfPages, 10);
+    let currentPage = props.curPage;
+    if (e.deltaY < 0 && props.curPage > 0) {
+      console.log('scrolling up');
+      currentPage--;
+    }
+    if (e.deltaY > 0 && props.curPage < numOfPages-1) {
+      console.log('scrolling down');
+      currentPage++;
+    }
     props.setCurPage(currentPage);
   }
 
   return (
-    <div className = 'pageContainer' onScroll={scrollHandler} ref={pageRef} id='pageContainer'>
+    <div className = 'pageContainer' onWheel={(e) => scrollHandler(e)} ref={pageRef} id='pageContainer'>
       <Page1 />
       <Page2 />
       <Page3 />
