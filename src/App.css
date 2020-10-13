@@ -47,6 +47,11 @@
   background-color: #209125;
 }
 
+.navArea button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .navArea .current {
   background-color: #209125;
   cursor: default;
@@ -54,6 +59,11 @@
 
 .navArea .current:hover {
   cursor: default;
+}
+
+.navArea .current:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 @media (max-width: 900px) {
@@ -97,13 +107,14 @@
 .pageContainer {
   width: 100%;
   height: calc(100vh - 40px);
-  overflow: auto;
+  overflow: scroll;
   -ms-overflow-style: none;
   scroll-margin: 20px;
   scrollbar-width: none;
   scroll-snap-type: y mandatory;
+  
 }
-.detailPane::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 0;
   background: transparent;
 }

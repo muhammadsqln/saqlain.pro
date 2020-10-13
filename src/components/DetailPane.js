@@ -18,30 +18,27 @@ function DetailPane(props) {
 
   useEffect(() => {
     //scroll when curPage changes
-    console.log(pageRef.current);
     const targetY = pageRef.current.offsetHeight * props.curPage;
     pageRef.current.scrollTo(0, targetY);
   }, [props.curPage])
 
   const scrollHandler = (e) => {
     //change curPage when scrolling
-    // const currentY = pageRef.current.scrollTop;
-    // const maxY = pageRef.current.scrollTopMax + pageRef.current.offsetHeight;
-    // const currentPage = parseInt((currentY/maxY)*numOfPages, 10);
     let currentPage = props.curPage;
     if (e.deltaY < 0 && props.curPage > 0) {
-      console.log('scrolling up');
       currentPage--;
+      console.log('Intent: scrolling up to page ' + (currentPage+1));
     }
     if (e.deltaY > 0 && props.curPage < numOfPages-1) {
-      console.log('scrolling down');
       currentPage++;
+      console.log('Intent: scrolling down to page ' + (currentPage+1));
     }
     props.setCurPage(currentPage);
   }
 
   return (
     <div className = 'pageContainer' onWheel={(e) => scrollHandler(e)} ref={pageRef} id='pageContainer'>
+      {console.log('Scrolling to ' + (props.curPage+1))}
       <Page1 />
       <Page2 />
       <Page3 />
